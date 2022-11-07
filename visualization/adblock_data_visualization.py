@@ -9,6 +9,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 df = pd.read_excel('Website (Chrome).xlsx')
+df2 = pd.read_excel('Website (Firefox).xlsx')
+df3 = pd.read_excel('Website (Edge).xlsx')
 
 
 #Basic Structure
@@ -79,4 +81,42 @@ plt.xticks(rotation = 90)
 plt.bar(df.columns[2:7], avgs_blocker, color = [colors[r] for r in colors])
 plt.show()
 
+#==================================Total =========================
 
+combined = pd.concat([df,df2, df3], axis = 0)
+#combined.plot.bar(x = 'Name', y = 'PrivacyBadger')
+
+#df.drop(columns = ['Average_Blocker_Website'], inplace = True)
+
+#combined['PrivacyBadger'].mean()
+
+
+grouped = combined.groupby(combined.index).mean()
+# grouped['Website Name'] = df['Name']   #Run to add name column to grouped 
+grouped.plot.bar(x = 'Website Name', y = 'PrivacyBadger', color = 'orange', title = 'Average Number of Blocked Domains Reported by Blocker')
+grouped.plot.bar(x = 'Website Name', y = 'uBlockOrigin', color = 'green', title = 'Average Number of Blocked Domains Reported by Blocker')
+grouped.plot.bar(x = 'Website Name', y = 'AdBlock', color = 'red', title = 'Average Number of Blocked Domains Reported by Blocker')
+grouped.plot.bar(x = 'Website Name', y = 'AdBlock Plus', color = 'gold', title = 'Average Number of Blocked Domains Reported by Blocker')
+grouped.plot.bar(x = 'Website Name', y = 'Ghostery', color = 'purple', title = 'Average Number of Blocked Domains Reported by Blocker')
+
+
+#======= Average By Program ==============
+sum_grouped = combined.groupby(combined.index).sum() 
+adjusted_mean = (sum_grouped.mean() / 3)
+adjusted_mean.plot(kind = 'bar', title = 'Average Domains Blocked By Program',
+                            xlabel = 'Blocker Program',
+                            yticks = [0,2,4,6,8,10,12,14,16,18],
+                            color = ['yellow', 'green', 'red', 'gold', 'purple'])
+
+
+
+
+#========Average By Website ===============
+avgs_group = (sum_grouped.sum(axis = 1) / 15)
+grouped['AVG'] = avgs_group
+
+grouped.plot(kind = 'bar', 
+             x = 'Website Name', 
+             y = 'AVG',
+             yticks = [0,4,8,12,16,20,24,28],
+             title = 'Average Number of Domains Blocked')
