@@ -25,25 +25,19 @@ The services offered online are mostly free and the most common way to monetize 
 \section*{Experiment Design}
 
 \section*{Results}
+Each blocker was tested individually on one browser at a time. 30 websites were tested with the blocker including: YouTube, CNN, Fox News, Twitter, Instagram, and Yahoo Finance.
+ Then, the number of domains that were blocked was reported by each blocker's icon.
+ A second test was performed using MITM-Proxy to examine network traffic to find the total number of ad domains requested by the webpages with each blocker.
 
-test
-
-\begin{figure}
-  \includegraphics[width=\linewidth]{AvgByProgram.png}
-  \caption{This graph compares the average number of domains detected and blocked by each blocking software.}
-  \label{fig:graph1}
-\end{figure}
-
-test2
+This graph illustrates the number of domains recorded by MITM-Proxy.
+The blue bar indicates the total number of domains recorded by the proxy while the red bar indicates the number of those domains that are considered known-ads when compared to the Stephen Black host list which Pi-Hole uses by default.
+The effectiveness of the ad-blocking software is indicated by the comparison of the blue and red graph. The lower the red bar when compared to the blue bar, the more effective the ad-blocker extension is at blocking DNS requests.
 
 \begin{figure}
-  \includegraphics[scale =1.5]{Ratio-of-Ad-domains-per-ad-blocker.png}
-  \caption{The total domains encountered by each blocker compared to the proportion of ads from those domains.}
-  \label{fig:graph2}
+  \includegraphics[scale =0.5]{Edit1.png}
+  \caption{The first graph(a) compares the total number of detected domains to the number ad-domains for each adblocker. The second graph(b) shows the average number of ad-domains reported by each adblocker.}
+  \label{fig:graph1ab}
 \end{figure}
-
-test3
-
 
 \section*{Conclusion/Future Work}
 
