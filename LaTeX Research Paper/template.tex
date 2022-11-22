@@ -25,17 +25,12 @@ The services offered online are mostly free and the most common way to monetize 
 \section*{Experiment Design}
 
 \section*{Results}
-Each blocker was tested individually on one browser at a time. 30 websites were tested with the blocker including: YouTube, CNN, Fox News, Twitter, Instagram, and Yahoo Finance.
- Then, the number of domains that were blocked was reported by each blocker's icon.
- A second test was performed using MITM-Proxy to examine network traffic to find the total number of ad domains requested by the webpages with each blocker.
-
-This graph illustrates the number of domains recorded by MITM-Proxy.
-The blue bar indicates the total number of domains recorded by the proxy while the red bar indicates the number of those domains that are considered known-ads when compared to the Stephen Black host list which Pi-Hole uses by default.
-The effectiveness of the ad-blocking software is indicated by the comparison of the blue and red graph. The lower the red bar when compared to the blue bar, the more effective the ad-blocker extension is at blocking DNS requests.
-
+The number of domains and ads blocked was first gathered from the blockers while in use and then gathered from proxy logs for comparison. The results of the first test found that uBlockOrigin detected and blocked the most domains on average followed by Ghostery and PrivacyBadger. uBlockOrigin blocked over 50\% more domains on average than the other blockers as shown in figure 1a. Although PrivacyBadger is not marketed as an adblocker, it blocked more domains on average than Adblock and Adblock Plus. 
+AdBlock and AdBlock Plus blocked the lowest number of domains on average.   
+The second test found that overall there were more domains and ads blocked by each blocker on average than their icon reports as shown in figure 1b. Similarly to the first test, uBlockOrigin was found to block the most domains due to the fewest number of domains and ads being detected. With this test there was an inverse relationship with the blocker's performance and the number of domains detected and blocked. The fewer the amount of total domains and ads detected is, the better the blocker. uBlockOrigin had less than 200 total domains to block while the other blockers had more than 400 total domains which indicates that uBlockOrigin also performed 50\% better than the other blockers in this test 
 \begin{figure}[h]
-  \includegraphics[scale =0.5]{Edit1.png}
-  \caption{The first graph(a) compares the total number of detected domains to the number ad-domains for each adblocker. The second graph(b) shows the average number of ad-domains reported by each adblocker.}
+  \includegraphics[scale = 0.75]{Edit3.png}
+  \caption{The first graph(a) compares the total number of detected domains to the number ad-domains blocked. Smaller bars indicate more domains blocked.  The second graph(b) shows the average number of ad-domains reported by each adblocker.}
   \label{fig:graph1ab}
 \end{figure}
 
