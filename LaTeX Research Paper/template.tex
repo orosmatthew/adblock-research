@@ -30,6 +30,10 @@ It is also worth mentioning that ad-blockers do not go unchallenged in their wor
 \section*{Experiment Design}
 Our testing methodology involves visiting a list of 30 websites with various ad-blocking extensions. We first recorded their effectiveness using the number of ads blocked reported by the extension. This information is self-reported by the ad-block so we then compared the results of this data to our recorded results using a network proxy.
 
+Ad-blocking extensions can work in various ways by analyzing HTML elements on a webpage and comparing them to a known database to DNS to blocking DNS queries or a combination of multiple methods. Because of this flexibility, it can be difficult to fully assess the capabilities of a number of different ad-blocking extensions. In this study, we focused on the area of DNS query based blocking.
+
+DNS stands for Domain Name System and is the system that maps human memorable domain names, such as google.com, to IP addresses that computers use to connect to a web server. DNS based blocking looks for requests the browser makes to certain domain names such as ads.google.com and instead of forwarding the request, blocks it by routing the domain to an invalid IP such as 0.0.0.0.
+
 To test the effectiveness of the ad-blocker we use a proxy called MITM-Proxy to record all DNS (domain) requests when we visit each website. Using crowd-sourced ad-lists, we compared and counted how many of the domains requested are considered ads despite the ad-blocker being installed. This process was done using Python. Python was also used to create many of the visualizations used for our results.
 
 Pi-hole is a DNS based ad-blocker and by using the same ad-lists that Pi-hole uses by default to test the effectiveness of the traditional ad-blocking extensions, we are able to predict the effectiveness of Pi-hole without having to actually run a Pi-hole instance. This allows us to compare the effectiveness of a DNS based ad-blocking solution to/with traditional ad-blocking extensions.
