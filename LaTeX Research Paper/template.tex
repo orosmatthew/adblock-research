@@ -23,6 +23,13 @@ The services offered online are mostly free and the most common way to monetize 
 
 
 \section*{Experiment Design}
+Our testing methodology involves visiting a list of 30 websites with various ad-blocking extensions. We first recorded their effectiveness using the number of ads blocked reported by the extension. This information is self-reported by the ad-block so we then compared the results of this data to our recorded results using a network proxy.
+
+To test the effectiveness of the ad-blocker we use a proxy called MITM-Proxy to record all DNS (domain) requests when we visit each website. Using crowd-sourced ad-lists, we compared and counted how many of the domains requested are considered ads despite the ad-blocker being installed. This process was done using Python. Python was also used to create many of the visualizations used for our results.
+
+Pi-hole is a DNS based ad-blocker and by using the same ad-lists that Pi-hole uses by default to test the effectiveness of the traditional ad-blocking extensions, we are able to predict the effectiveness of Pi-hole without having to actually run a Pi-hole instance. This allows us to compare the effectiveness of a DNS based ad-blocking solution to/with traditional ad-blocking extensions.
+
+The outcome of the experiments include data about self-reported ads blocked by browsers extensions, number of ads per website tested, total requested domains per ad-blocker, and ratio of domains that are considered ads based on that total. The ratio is determined by which requested domains are also found in the default Pi-hole ad-list.
 
 \section*{Results}
 The number of domains and ads blocked was first gathered from the blockers while in use and then gathered from proxy logs for comparison. The results of the first test found that uBlockOrigin detected and blocked the most domains on average followed by Ghostery and PrivacyBadger. uBlockOrigin blocked over 50\% more domains on average than the other blockers as shown in figure 1a. Although PrivacyBadger is not marketed as an adblocker, it blocked more domains on average than Adblock and Adblock Plus. 
