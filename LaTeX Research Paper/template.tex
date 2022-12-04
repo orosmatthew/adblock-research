@@ -1,6 +1,7 @@
 \documentclass[sigsmall]{acmart}
 
 \usepackage{graphicx}
+\usepackage{float}
 
 \title{Summary of \emph{How Effective Are Commonly-Used Ad-Blockers?}}
 \author{Matthew Oros, Sonny Smith, Michael Terekhov, Dennis Ulichney}
@@ -44,12 +45,11 @@ The number of domains and ads blocked was first gathered from the blockers while
 AdBlock and AdBlock Plus blocked the lowest number of domains on average with mininal difference between the two blockers.  
  
 The second test found that overall there were more domains and ads blocked by each blocker on average than reported by their icons as shown in figure 1b. Similarly to the first test, uBlockOrigin was found to block the most domains due to the fewest number of domains and ads being detected while it was active. With this test there was an inverse relationship with the blocker's performance and the number of domains detected and blocked. The fewer the amount of total domains and ads detected is, the better the blocker. uBlockOrigin had less than 200 total domains to block while the other blockers had more than 400 total domains which indicates that uBlockOrigin performed 50\% better than the other blockers in this test as well. Adblock Plus had the most total domains active of nearly 600. In comparison, Adblock, Ghostery, and PrivacyBadger all had around 450-475 total domains active. Adblock and Ghostery had similar total domain counts while Ghostery had a greater proportion of ad-domains. PrivacyBadger fell somewhere inbetwen Ghostery and Adblock in terms of total domain and ad-domain counts.   
-\begin{figure}[h]
+\begin{figure}[H]
   \includegraphics[scale = 0.75]{Edit3.png}
   \caption{ The leftmost graph(a) shows the average number of ad-domains reported by each adblocker. The rightmost graph(b) compares the total number of domains detected with a proxy to the number of those domains that are ads while each blocker was active.}
   \label{fig:graph1ab}
 \end{figure}
-
 
 \section*{Future Work}
  Looking forward, we have identified a number of aspects of ad-blockers in addition to the ones we studied in this research project that could also be worth investigating. These consist of comparing the load time impacts of ad-blocking browser extensions with DNS-based services like Pi-Hole, exploring the effectiveness of combining ad-blocking browser extensions with DNS-based ones, and how running multiple ad-blockers of the same kind can affect their performances. We will next detail these ideas further in the following paragraphs, beginning with comparing the load time effects between ad-blocking browser extensions and DNS-based ad-blockers.
